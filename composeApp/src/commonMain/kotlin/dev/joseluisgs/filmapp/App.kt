@@ -1,16 +1,11 @@
 package dev.joseluisgs.filmapp
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ContentAlpha
-import androidx.compose.material.TopAppBar
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.navigator.tab.*
 import dev.joseluisgs.filmapp.screens.favoritos.FavoritosTab
@@ -42,9 +37,12 @@ fun App() = AppTheme {
                     title = {
                         Text(
                             text = tabNavigator.current.options.title,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            color = MaterialTheme.colorScheme.primary
                         )
-                    }
+                    },
+                    colors = TopAppBarDefaults.largeTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                    )
                 )
             },
             content = {
@@ -53,7 +51,9 @@ fun App() = AppTheme {
             },
             bottomBar = {
                 // Creamos la barra de navegación
-                BottomNavigation {
+                BottomAppBar(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                ) {
                     tabList.forEach { tab ->
                         TabNavigationItem(tab)
                     }
@@ -75,9 +75,9 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
                 painter = tab.options.icon!!,
                 contentDescription = tab.options.title,
                 tint = if (tabNavigator.current.key == tab.key) {
-                    MaterialTheme.colorScheme.onPrimary
+                    MaterialTheme.colorScheme.primary
                 } else {
-                    MaterialTheme.colorScheme.onPrimary.copy(alpha = ContentAlpha.medium)
+                    MaterialTheme.colorScheme.primary.copy(alpha = ContentAlpha.medium)
                 },
             )
         },
@@ -86,12 +86,11 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
             Text(
                 text = tab.options.title,
                 color = if (tabNavigator.current.key == tab.key) {
-                    MaterialTheme.colorScheme.onPrimary
+                    MaterialTheme.colorScheme.primary
                 } else {
-                    MaterialTheme.colorScheme.onPrimary.copy(alpha = ContentAlpha.medium)
+                    MaterialTheme.colorScheme.primary.copy(alpha = ContentAlpha.medium)
                 },
                 fontSize = MaterialTheme.typography.labelSmall.fontSize,
-                modifier = Modifier.padding(4.dp)
             )
         }
     )
