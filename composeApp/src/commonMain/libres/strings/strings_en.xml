@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FilmApp</string>
+    <string name="app_version">1.0.0</string>
+    <string name="app_author">José Luis González</string>
+    <string name="app_author_web">https://joseluisgs.dev</string>
+    <string name="app_author_github">https://github.com/joseluisgs</string>
+    <string name="tab_novedades">Novedades</string>
+    <string name="tab_favoritos">Favoritos</string>
+    <string name="tab_informacion">Información</string>
+
+    <!-- <string name="simple_string">Hello!</string>
+     <string name="string_with_arguments">Hello ${name}!</string>
+     <plurals name="plural_string">
+         <item quantity="one">resource</item>
+         <item quantity="other">resources</item>
+     </plurals>-->
+</resources>
