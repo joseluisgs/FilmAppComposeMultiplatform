@@ -4,6 +4,10 @@ import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import dev.joseluisgs.filmapp.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.GlobalContext.startKoin
 
 class AndroidApp : Application() {
     companion object {
@@ -13,6 +17,13 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+
+        // Importamos el módulo de Koin
+        startKoin {
+            androidContext(this@AndroidApp)
+            modules(appModule)
+            androidLogger()
+        }
     }
 }
 

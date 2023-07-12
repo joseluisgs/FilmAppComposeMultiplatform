@@ -50,6 +50,7 @@ kotlin {
                 implementation(libs.logger)
                 implementation(libs.result)
                 implementation(libs.sqlDelight.coroutines.extensions)
+                implementation("media.kamel:kamel-image:0.6.1")
             }
         }
 
@@ -123,6 +124,7 @@ compose.desktop {
     }
 }
 
+// Recursos de libres
 libres {
     // https://github.com/Skeptick/libres#setup
 }

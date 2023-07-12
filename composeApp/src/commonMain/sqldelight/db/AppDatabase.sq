@@ -1,0 +1,8 @@
+CREATE TABLE FilmFavorite (
+   id   INTEGER PRIMARY KEY AUTOINCREMENT,
+   name TEXT NOT NULL,
+   director TEXT NOT NULL,
+   synopsis TEXT NOT NULL,
+   image TEXT NOT NULL,
+   rate TEXT NOT NULL
+);

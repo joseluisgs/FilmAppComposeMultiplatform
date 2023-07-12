@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,8 +22,10 @@ private val logger = logging()
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalVoyagerApi::class)
 @Composable
 fun App() = AppTheme {
+
     val tabList = remember { listOf(NovedadesTab, FavoritosTab, InfoTab) }
     logger.info { "Iniciando la App: ${Res.string.app_name}" }
+
     // Inicializamos el navegador con la lista de tabs
     TabNavigator(
         NovedadesTab,
@@ -35,6 +36,7 @@ fun App() = AppTheme {
             )
         }
     ) { tabNavigator ->
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -58,15 +60,6 @@ fun App() = AppTheme {
                     Column(Modifier.weight(1f)) {
                         CurrentTab()
                     }
-
-                    // Snackbar
-                    /*MySnackbar(
-                        message = "Soy un snackbar",
-                        actionLabel = "Recargar",
-                        onDismiss = { logger.debug { "Snackbar dismissed" } },
-                        onAction = { logger.debug { "Snackbar action clicked" } },
-                    )*/
-
                 }
 
             },
@@ -118,24 +111,5 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
     )
 }
 
-@Composable
-fun MySnackbar(
-    message: String,
-    actionLabel: String = "",
-    duration: SnackbarDuration = SnackbarDuration.Short,
-    onDismiss: () -> Unit = {},
-    onAction: () -> Unit = {},
-) {
-    val snackbarHostState = remember { SnackbarHostState() }
-
-    LaunchedEffect(snackbarHostState) {
-        when (snackbarHostState.showSnackbar(message, actionLabel, duration = duration)) {
-            SnackbarResult.Dismissed -> onDismiss()
-            SnackbarResult.ActionPerformed -> onAction()
-        }
-    }
-
-    SnackbarHost(hostState = snackbarHostState)
-}
 
 

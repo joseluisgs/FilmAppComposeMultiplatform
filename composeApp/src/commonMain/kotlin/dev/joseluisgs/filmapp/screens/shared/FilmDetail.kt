@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import dev.joseluisgs.filmapp.Res
 
 @Composable
-fun FilmDetail(onClose: () -> Unit) {
+fun FilmDetail(onBackClick: () -> Unit) {
     // Recuerda que el box es un contenedor y el primero que se pinta
     Box(
         modifier = Modifier.fillMaxWidth()
@@ -35,7 +35,7 @@ fun FilmDetail(onClose: () -> Unit) {
         )
         // Icono de cerrar
         IconButton(
-            onClick = { onClose() },
+            onClick = { onBackClick() },
             modifier = Modifier.align(Alignment.TopEnd).pointerHoverIcon(PointerIcon.Hand)
         ) {
             Icon(
