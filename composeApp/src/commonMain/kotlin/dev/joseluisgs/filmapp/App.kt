@@ -1,11 +1,13 @@
 package dev.joseluisgs.filmapp
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.BottomNavigationItem
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.navigator.tab.*
 import dev.joseluisgs.filmapp.screens.favoritos.FavoritosTab
@@ -47,13 +49,14 @@ fun App() = AppTheme {
             },
             content = {
                 // Obtenemos el contenido de la tab actual
-                CurrentTab()
+                Column(Modifier.padding(it)) {
+                    CurrentTab()
+                }
+
             },
             bottomBar = {
                 // Creamos la barra de navegación
-                BottomAppBar(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                ) {
+                BottomAppBar {
                     tabList.forEach { tab ->
                         TabNavigationItem(tab)
                     }
@@ -67,7 +70,10 @@ fun App() = AppTheme {
 private fun RowScope.TabNavigationItem(tab: Tab) {
     val tabNavigator = LocalTabNavigator.current
 
-    BottomNavigationItem(
+    // Material 2
+    // BottomNavigationItem(
+    // Material 3
+    NavigationBarItem(
         selected = tabNavigator.current.key == tab.key,
         onClick = { tabNavigator.current = tab },
         icon = {
