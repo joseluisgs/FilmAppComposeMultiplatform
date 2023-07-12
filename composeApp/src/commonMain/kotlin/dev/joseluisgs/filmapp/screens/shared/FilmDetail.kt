@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import dev.joseluisgs.filmapp.Res
 
 @Composable
-fun MovieDetail(onClose: () -> Unit) {
+fun FilmDetail(onClose: () -> Unit) {
     // Recuerda que el box es un contenedor y el primero que se pinta
     Box(
         modifier = Modifier.fillMaxWidth()

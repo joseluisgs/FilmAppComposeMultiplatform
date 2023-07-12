@@ -7,7 +7,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import dev.joseluisgs.filmapp.screens.shared.MovieList
+import dev.joseluisgs.filmapp.screens.shared.FilmList
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
@@ -20,7 +20,7 @@ fun NovedadesView(onItemClick: () -> Unit) {
             .background(Color.LightGray)
             .fillMaxSize()
     ) {
-        MovieList(onItemClick = onItemClick)
+        FilmList(onItemClick = onItemClick)
     }
 }
 

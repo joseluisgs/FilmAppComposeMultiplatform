@@ -33,15 +33,15 @@ fun MovieCard(onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(16.dp)
         ) {
-            MovieImage()
-            MovieInfo()
+            FilmImage()
+            FilmInfo()
         }
 
     }
 }
 
 @Composable
-fun MovieInfo() {
+fun FilmInfo() {
     Column(
         // Separados 16dp
         modifier = Modifier
@@ -70,7 +70,7 @@ fun MovieInfo() {
 }
 
 @Composable
-fun MovieImage() {
+fun FilmImage() {
     val painter = painterResource(Res.image.demo)
     Column {
         Image(

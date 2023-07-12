@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 
 
 @Composable
-fun MovieList(onItemClick: () -> Unit) {
+fun FilmList(onItemClick: () -> Unit) {
     // hacemos una lazy list de 5
     LazyColumn {
         items(5) {
