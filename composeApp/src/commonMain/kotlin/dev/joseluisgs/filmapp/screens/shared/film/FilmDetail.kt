@@ -9,7 +9,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.layout.ContentScale
@@ -31,93 +30,100 @@ fun FilmDetail(film: Film, onBackClick: () -> Unit) {
         DetailImage(film)
         // Icono de cerrar
         DetailCloseButton(
+            onBackClick = onBackClick,
             modifier = Modifier.align(Alignment.TopEnd),
-            onBackClick = onBackClick
-        )
+
+            )
         // Card
-        Card(
-            elevation = CardDefaults.cardElevation(8.dp),
-            shape = MaterialTheme.shapes.medium,
-            modifier = Modifier.fillMaxWidth().fillMaxHeight(0.6f)
-                .align(Alignment.BottomCenter)
-                .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
-        ) {
-            // Lo voy a hacer con un columna
-            Column(
-                verticalArrangement = Arrangement.Top,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(8.dp)
-            ) {
-                // Una fila que tiene el titulo y el director y el icono de favorito
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                ) {
-                    // Columna con el titulo y el director
-                    Column(
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Text(
-                            text = film.name,
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.W600,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            text = film.director,
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.W600,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            text = film.rate,
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = FontWeight.W400,
-                            color = MaterialTheme.colorScheme.secondary
-                        )
-                    }
-                    // Icono de favorito
-                    IconButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier.align(Alignment.CenterVertically).padding(8.dp)
-                            .pointerHoverIcon(PointerIcon.Hand)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "Favorite",
-                            modifier = Modifier.size(128.dp)
-                        )
-                    }
-                }
-                // Sinopsis
-                Text(
-                    text = film.synopsis,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(8.dp)
-                )
-            }
-        }
+        DetailsInfo(
+            film = film,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
 
     }
 }
 
 @Composable
+private fun DetailsInfo(film: Film, modifier: Modifier = Modifier) {
+    Card(
+        elevation = CardDefaults.cardElevation(8.dp),
+        shape = MaterialTheme.shapes.medium,
+        modifier = modifier.fillMaxWidth().fillMaxHeight(0.6f)
+            .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
+    ) {
+        // Lo voy a hacer con un columna
+        Column(
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(8.dp)
+        ) {
+            // Una fila que tiene el titulo y el director y el icono de favorito
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                // Columna con el titulo y el director
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = film.name,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.W600,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        text = film.director,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.W600,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        text = film.rate,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontWeight = FontWeight.W400,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                }
+                // Icono de favorito
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.align(Alignment.CenterVertically).padding(8.dp)
+                        .pointerHoverIcon(PointerIcon.Hand)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Star,
+                        contentDescription = "Favorite",
+                        modifier = Modifier.size(128.dp)
+                    )
+                }
+            }
+            // Sinopsis
+            Text(
+                text = film.synopsis,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp)
+            )
+        }
+    }
+}
+
+@Composable
 private fun DetailCloseButton(modifier: Modifier = Modifier, onBackClick: () -> Unit) {
-    IconButton(
+    Button(
         onClick = { onBackClick() },
-        modifier = modifier.pointerHoverIcon(PointerIcon.Hand),
+        modifier = modifier.pointerHoverIcon(PointerIcon.Hand)
+            .padding(8.dp)
     ) {
         Icon(
             imageVector = Icons.Default.Close,
             contentDescription = "Close",
-            modifier = Modifier.padding(8.dp),
-            tint = Color.Blue
         )
     }
 }
