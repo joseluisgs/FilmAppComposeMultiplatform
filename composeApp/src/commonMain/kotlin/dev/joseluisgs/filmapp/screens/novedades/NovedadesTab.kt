@@ -1,4 +1,4 @@
-package dev.joseluisgs.filmapp.screens.home
+package dev.joseluisgs.filmapp.screens.novedades
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -31,6 +31,6 @@ object NovedadesTab : Tab {
 
     @Composable
     override fun Content() {
-        HomeView()
+        NovedadesView()
     }
 }
