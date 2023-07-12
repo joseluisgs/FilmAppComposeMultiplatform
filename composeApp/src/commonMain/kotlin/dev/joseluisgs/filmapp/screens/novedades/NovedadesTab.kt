@@ -8,6 +8,7 @@ import compose.icons.FeatherIcons
 import compose.icons.feathericons.Film
 import dev.joseluisgs.filmapp.Res
 import dev.joseluisgs.filmapp.screens.detail.DetailView
+import dev.joseluisgs.filmapp.screens.shared.ViewType
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
@@ -35,24 +36,18 @@ object NovedadesTab : Tab {
 
     @Composable
     override fun Content() {
-        var screen by remember { mutableStateOf(Screen.NOVEDADES) }
-        if (screen == Screen.NOVEDADES) {
+        var screen by remember { mutableStateOf(ViewType.NOVEDADES) }
+
+        if (screen == ViewType.NOVEDADES) {
             NovedadesView(onItemClick = {
                 logger.debug { "Click en Detalle" }
-                screen = Screen.DETALLE
+                screen = ViewType.DETALLE
             })
         } else {
             DetailView {
                 logger.debug { "Click en Cerrar" }
-                screen = Screen.NOVEDADES
+                screen = ViewType.NOVEDADES
             }
         }
     }
-
-
-    enum class Screen {
-        NOVEDADES, DETALLE
-    }
-
-
 }

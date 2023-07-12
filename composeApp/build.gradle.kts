@@ -49,6 +49,7 @@ kotlin {
                 implementation(libs.koin.core)
                 implementation(libs.logger)
                 implementation(libs.result)
+                implementation(libs.sqlDelight.coroutines.extensions)
             }
         }
 
