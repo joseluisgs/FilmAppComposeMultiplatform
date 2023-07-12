@@ -1,36 +1,20 @@
-package dev.joseluisgs.filmapp.screens.novedades
+package dev.joseluisgs.filmapp.screens.shared
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.joseluisgs.filmapp.Res
-import org.lighthousegames.logging.logging
-
-private val logger = logging()
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun NovedadesView() {
-    Column(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .fillMaxSize()
-    ) {
-        MovieCard(onClick = { /*TODO*/ })
-    }
-}
 
 
 @Composable
@@ -38,7 +22,7 @@ fun MovieCard(onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(8.dp),
         shape = MaterialTheme.shapes.medium,
-        modifier = Modifier.padding(16.dp).pointerHoverIcon(PointerIcon.Hand)
+        modifier = Modifier.padding(16.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

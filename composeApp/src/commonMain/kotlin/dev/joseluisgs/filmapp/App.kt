@@ -27,7 +27,7 @@ fun App() = AppTheme {
     logger.info { "Iniciando la App: ${Res.string.app_name}" }
     // Inicializamos el navegador con la lista de tabs
     TabNavigator(
-        NovedadesTab,
+        FavoritosTab,
         tabDisposable = {
             TabDisposable(
                 navigator = it,
