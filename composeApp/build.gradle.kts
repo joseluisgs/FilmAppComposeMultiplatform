@@ -128,6 +128,7 @@ compose.desktop {
 libres {
     // https://github.com/Skeptick/libres#setup
 }
+
 tasks.getByPath("desktopProcessResources").dependsOn("libresGenerateResources")
 tasks.getByPath("desktopSourcesJar").dependsOn("libresGenerateResources")
 

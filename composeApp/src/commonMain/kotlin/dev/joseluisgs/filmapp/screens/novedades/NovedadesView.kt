@@ -13,8 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.joseluisgs.filmapp.screens.shared.FilmList
-import dev.joseluisgs.filmapp.screens.shared.MySnackbar
+import dev.joseluisgs.filmapp.model.Film
+import dev.joseluisgs.filmapp.screens.shared.film.FilmList
+import dev.joseluisgs.filmapp.screens.shared.snackbar.MySnackbar
 import dev.joseluisgs.filmapp.screens.viewmodel.FilmViewModel
 import kotlinx.coroutines.launch
 import org.lighthousegames.logging.logging
@@ -23,7 +24,7 @@ private val logger = logging()
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NovedadesView(vm: FilmViewModel, onItemClick: () -> Unit) {
+fun NovedadesView(vm: FilmViewModel, onItemClick: (film: Film) -> Unit) {
     val coroutineScope = rememberCoroutineScope()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

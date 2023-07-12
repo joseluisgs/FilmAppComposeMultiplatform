@@ -1,4 +1,4 @@
-package dev.joseluisgs.filmapp.screens.shared
+package dev.joseluisgs.filmapp.screens.shared.film
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -7,7 +7,7 @@ import dev.joseluisgs.filmapp.model.Film
 
 
 @Composable
-fun FilmList(films: List<Film>, onItemClick: () -> Unit) {
+fun FilmList(films: List<Film>, onItemClick: (film: Film) -> Unit) {
     // hacemos una lazy list de 5
     LazyColumn {
         items(films) { film ->

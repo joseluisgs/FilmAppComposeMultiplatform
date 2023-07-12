@@ -1,4 +1,4 @@
-package dev.joseluisgs.filmapp.screens.shared
+package dev.joseluisgs.filmapp.screens.shared.film
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,13 +21,13 @@ import org.lighthousegames.logging.logging
 val logger = logging()
 
 @Composable
-fun MovieCard(film: Film, onClick: () -> Unit) {
+fun MovieCard(film: Film, onClick: (film: Film) -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(8.dp),
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier.padding(16.dp)
             .pointerHoverIcon(PointerIcon.Hand)
-            .clickable { onClick() }
+            .clickable { onClick(film) }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

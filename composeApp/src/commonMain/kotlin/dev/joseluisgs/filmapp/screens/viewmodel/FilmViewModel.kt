@@ -19,6 +19,9 @@ class FilmViewModel(
     var state by mutableStateOf(State())
         private set
 
+    var selectedRemoteFilm by mutableStateOf(Film())
+        private set
+
     init {
         logger.info { "Inicializando FilmViewModel" }
         state = state.copy(isLoading = true)
@@ -43,6 +46,10 @@ class FilmViewModel(
                 )
             }
         )
+    }
+
+    fun setRemoteFilmDetails(film: Film) {
+        selectedRemoteFilm = film
     }
 
 

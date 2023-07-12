@@ -1,4 +1,4 @@
-package dev.joseluisgs.filmapp.screens.shared
+package dev.joseluisgs.filmapp.screens.shared.snackbar
 
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost

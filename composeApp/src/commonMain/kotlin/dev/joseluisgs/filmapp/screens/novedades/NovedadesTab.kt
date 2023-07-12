@@ -9,7 +9,7 @@ import compose.icons.FeatherIcons
 import compose.icons.feathericons.Film
 import dev.joseluisgs.filmapp.Res
 import dev.joseluisgs.filmapp.screens.detail.DetailView
-import dev.joseluisgs.filmapp.screens.shared.ViewType
+import dev.joseluisgs.filmapp.screens.shared.views.ViewType
 import dev.joseluisgs.filmapp.screens.viewmodel.FilmViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -45,18 +45,22 @@ object NovedadesTab : Tab, KoinComponent {
 
         if (screen == ViewType.NOVEDADES) {
             NovedadesView(
-                vm = rememberScreenModel { viewModel }
-            ) {
-                logger.debug { "Click en Detalle" }
-                screen = ViewType.DETALLE
-            }
+                vm = rememberScreenModel { viewModel },
+                onItemClick = {
+                    viewModel.setRemoteFilmDetails(it)
+                    logger.debug { "Click en Detalle con Film: $it" }
+                    screen = ViewType.DETALLE
+                }
+            )
+
         } else {
             DetailView(
                 vm = rememberScreenModel { viewModel },
                 onBackClick = {
                     logger.debug { "Click en Cerrar" }
                     screen = ViewType.NOVEDADES
-                })
+                }
+            )
         }
     }
 }
