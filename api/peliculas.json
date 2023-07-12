@@ -1,40 +1,40 @@
 [
   {
     "director": "Francis Ford Coppola",
-    "id": 0,
-    "image": "https://raw.githubusercontent.com/joseluisgs/Kotlin-Jetpack-Android/main/app/src/main/res/drawable/godfather.png",
+    "id": 1,
+    "image": "https://raw.githubusercontent.com/joseluisgs/FilmAppCompose/main/api/godfather.png",
     "name": "El Padrino",
     "rate": "10/10",
     "synopsis": "América, años 40. Don Vito Corleone (Marlon Brando) es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York. Tiene cuatro hijos: Connie (Talia Shire), el impulsivo Sonny (James Caan), el pusilánime Fredo (John Cazale) y Michael (Al Pacino), que no quiere saber nada de los negocios de su padre. Cuando Corleone, en contra de los consejos de 'Il consigliere' Tom Hagen (Robert Duvall), se niega a participar en el negocio de las drogas, el jefe de otra banda ordena su asesinato. Empieza entonces una violenta y cruenta guerra entre las familias mafiosas."
   },
   {
     "director": "Stanley Kubrick",
-    "id": 1,
-    "image": "https://raw.githubusercontent.com/joseluisgs/Kotlin-Jetpack-Android/main/app/src/main/res/drawable/clockworkorange.png",
+    "id": 2,
+    "image": "https://raw.githubusercontent.com/joseluisgs/FilmAppCompose/main/api/clockworkorange.png",
     "name": "La Naranja Mecánica",
     "rate": "10/10",
     "synopsis": "Gran Bretaña, en un futuro indeterminado. Alex (Malcolm McDowell) es un joven muy agresivo que tiene dos pasiones: la violencia desaforada y Beethoven. Es el jefe de la banda de los drugos, que dan rienda suelta a sus instintos más salvajes apaleando, violando y aterrorizando a la población. Cuando esa escalada de terror llega hasta el asesinato, Alex es detenido y, en prisión, se someterá voluntariamente a una innovadora experiencia de reeducación que pretende anular drásticamente cualquier atisbo de conducta antisocial."
   },
   {
     "director": "Katsuhiro Ōtomo",
-    "id": 2,
-    "image": "https://raw.githubusercontent.com/joseluisgs/Kotlin-Jetpack-Android/main/app/src/main/res/drawable/akira.png",
+    "id": 3,
+    "image": "https://raw.githubusercontent.com/joseluisgs/FilmAppCompose/main/api/akira.png",
     "name": "Akira",
     "rate": "9/10",
     "synopsis": "Año 2019. Neo-Tokyo es una ciudad construida sobre las ruinas de la antigua capital japonesa destruida tras la Tercera Guerra Mundial. Japón es un país al borde del colapso que sufre continuas crisis políticas. En secreto, un equipo de científicos ha reanudado por orden del ejército un experimento para encontrar a individuos que puedan controlar el arma definitiva: una fuerza denominada \"la energía absoluta\". Pero los habitantes de Neo-Tokyo tienen otras cosas de las que preocuparse. Uno de ellos es Kaneda, un joven pandillero líder de una banda de motoristas. Durante una pelea, su mejor amigo, Tetsuo, sufre un extraño accidente y termina ingresado en unas instalaciones militares. Allí los científicos descubrirán que es el poseedor de la energía absoluta."
   },
   {
     "director": "Quentin Tarantino",
-    "id": 3,
-    "image": "https://raw.githubusercontent.com/joseluisgs/Kotlin-Jetpack-Android/main/app/src/main/res/drawable/pulpfiction.png",
+    "id": 4,
+    "image": "https://raw.githubusercontent.com/joseluisgs/FilmAppCompose/main/api/pulpfiction.png",
     "name": "Pulp Fiction",
     "rate": "9/10",
     "synopsis": "Jules y Vincent, dos asesinos a sueldo con no demasiadas luces, trabajan para el gángster Marsellus Wallace. Vincent le confiesa a Jules que Marsellus le ha pedido que cuide de Mia, su atractiva mujer. Jules le recomienda prudencia porque es muy peligroso sobrepasarse con la novia del jefe. Cuando llega la hora de trabajar, ambos deben ponerse \"manos a la obra\". Su misión: recuperar un misterioso maletín."
   },
   {
     "director": "Martin Scorsese",
-    "id": 4,
-    "image": "https://raw.githubusercontent.com/joseluisgs/Kotlin-Jetpack-Android/main/app/src/main/res/drawable/taxidriver.png",
+    "id": 5,
+    "image": "https://raw.githubusercontent.com/joseluisgs/FilmAppCompose/main/api/taxidriver.png",
     "name": "Taxi Driver",
     "rate": "9/10",
     "synopsis": "Para sobrellevar el insomnio crónico que sufre desde su regreso de Vietnam, Travis Bickle (Robert De Niro) trabaja como taxista nocturno en Nueva York. Es un hombre insociable que apenas tiene contacto con los demás, se pasa los días en el cine y vive prendado de Betsy (Cybill Shepherd), una atractiva rubia que trabaja como voluntaria en una campaña política. Pero lo que realmente obsesiona a Travis es comprobar cómo la violencia, la sordidez y la desolación dominan la ciudad. Y un día decide pasar a la acción."
