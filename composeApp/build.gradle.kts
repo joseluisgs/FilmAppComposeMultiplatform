@@ -50,7 +50,7 @@ kotlin {
                 implementation(libs.logger)
                 implementation(libs.result)
                 implementation(libs.sqlDelight.coroutines.extensions)
-                implementation("media.kamel:kamel-image:0.6.1")
+                implementation(libs.kamel.image)
             }
         }
 
