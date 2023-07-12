@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
     alias(libs.plugins.libres)
-    alias(libs.plugins.buildConfig)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.sqlDelight)
 }
@@ -39,7 +38,6 @@ kotlin {
                 implementation(libs.libres)
                 implementation(libs.voyager.navigator)
                 implementation(libs.voyager.tab.navigator)
-                implementation(libs.composeImageLoader)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.client.serialization)
@@ -76,6 +74,8 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.common)
                 implementation(compose.desktop.currentOs)
+                // las necesitamos porque si no no funciona Voyager y Kamel al quitar composeImageLoeader
+                implementation(libs.kotlinx.coroutines.swing)
                 implementation(libs.ktor.client.okhttp)
                 implementation(libs.sqlDelight.driver.sqlite)
                 implementation(libs.logback)
@@ -130,11 +130,6 @@ libres {
 }
 tasks.getByPath("desktopProcessResources").dependsOn("libresGenerateResources")
 tasks.getByPath("desktopSourcesJar").dependsOn("libresGenerateResources")
-
-buildConfig {
-    // BuildConfig configuration here.
-    // https://github.com/gmazzo/gradle-buildconfig-plugin#usage-in-kts
-}
 
 sqldelight {
     databases {

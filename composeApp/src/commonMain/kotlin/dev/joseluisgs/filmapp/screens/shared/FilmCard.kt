@@ -84,6 +84,5 @@ fun FilmImage(film: Film) {
         onFailure = { exception ->
             logger.error { "Error al cargar la imagen: ${exception.message}" }
         },
-        //animationSpec = tween(),
     )
 }
