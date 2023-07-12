@@ -8,10 +8,13 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.github.michaelbull.result.mapBoth
 import dev.joseluisgs.filmapp.model.Film
 import dev.joseluisgs.filmapp.repository.FilmRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
+private val REFRESH_INTERVAL = 1000L * 60L // 1 minute
 
 class FilmViewModel(
     private val repository: FilmRepository
@@ -25,8 +28,12 @@ class FilmViewModel(
     init {
         logger.info { "Inicializando FilmViewModel" }
         state = state.copy(isLoading = true)
+        // Primero cargamos los datos remotos
         coroutineScope.launch {
-            loadRemoteFilms()
+            while (true) {
+                loadRemoteFilms()
+                delay(REFRESH_INTERVAL)
+            }
         }
     }
 
@@ -35,7 +42,7 @@ class FilmViewModel(
         repository.getRemoteFilms().mapBoth(
             success = {
                 logger.debug { "Películas remotas cargadas" }
-                state = state.copy(isLoading = false, remoteFilms = it)
+                state = state.copy(isLoading = false, remoteFilms = it.first())
             },
             failure = {
                 logger.error { "Error al cargar las películas remotas" }
