@@ -8,8 +8,16 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Info
 import dev.joseluisgs.filmapp.Res
+import org.lighthousegames.logging.logging
+
+private val logger = logging()
 
 object InfoTab : Tab {
+
+    init {
+        logger.debug { "Inicializando InfoTab" }
+    }
+
 
     override val options: TabOptions
         @Composable

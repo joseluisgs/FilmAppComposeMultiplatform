@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.ExternalLink
@@ -108,13 +109,13 @@ fun InfoText() {
             text = Res.string.app_name,
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.primary,
-            fontWeight = MaterialTheme.typography.titleLarge.fontWeight
+            fontWeight = FontWeight.W700
         )
         Text(
             text = getPlatformName(),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.primary,
-            fontWeight = MaterialTheme.typography.titleMedium.fontWeight
+            fontWeight = FontWeight.W500
         )
         Text(
             text = "Versión: ${Res.string.app_version}",
@@ -125,7 +126,7 @@ fun InfoText() {
             text = Res.string.app_author,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.secondary,
-            fontWeight = MaterialTheme.typography.bodyLarge.fontWeight
+            fontWeight = FontWeight.W600
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,

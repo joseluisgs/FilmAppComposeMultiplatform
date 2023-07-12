@@ -1,6 +1,7 @@
 package dev.joseluisgs.filmapp.screens.shared
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -11,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -23,6 +26,8 @@ fun MovieCard(onClick: () -> Unit) {
         elevation = CardDefaults.cardElevation(8.dp),
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier.padding(16.dp)
+            .pointerHoverIcon(PointerIcon.Hand)
+            .clickable { onClick() }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -47,16 +52,19 @@ fun MovieInfo() {
             text = "Movie Title",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.W600,
+            color = MaterialTheme.colorScheme.primary
         )
         Text(
             text = "Movie Author",
             style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.W600
+            fontWeight = FontWeight.W600,
+            color = MaterialTheme.colorScheme.primary
         )
         Text(
             text = "10/10",
             style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.W400
+            fontWeight = FontWeight.W400,
+            color = MaterialTheme.colorScheme.secondary
         )
     }
 }
@@ -64,7 +72,6 @@ fun MovieInfo() {
 @Composable
 fun MovieImage() {
     val painter = painterResource(Res.image.demo)
-
     Column {
         Image(
             painter = painter,

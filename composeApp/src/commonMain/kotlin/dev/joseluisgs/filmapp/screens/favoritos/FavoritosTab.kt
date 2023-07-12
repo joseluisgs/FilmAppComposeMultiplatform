@@ -8,8 +8,15 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Star
 import dev.joseluisgs.filmapp.Res
+import org.lighthousegames.logging.logging
+
+private val logger = logging()
 
 object FavoritosTab : Tab {
+
+    init {
+        logger.debug { "Inicializando FavoritosTab" }
+    }
 
     override val options: TabOptions
         @Composable
