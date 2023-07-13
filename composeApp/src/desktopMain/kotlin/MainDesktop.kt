@@ -5,6 +5,7 @@ import androidx.compose.ui.window.rememberWindowState
 import dev.joseluisgs.filmapp.App
 import dev.joseluisgs.filmapp.Res
 import dev.joseluisgs.filmapp.di.appModule
+import dev.joseluisgs.filmapp.di.databaseModule
 import dev.joseluisgs.filmapp.utils.getPlatformName
 import io.github.skeptick.libres.compose.painterResource
 import org.koin.core.context.GlobalContext.startKoin
@@ -13,7 +14,7 @@ fun main() = application {
     // Importamos el módulo de Koin
     startKoin {
         printLogger()
-        modules(appModule)
+        modules(appModule, databaseModule)
     }
 
     Window(

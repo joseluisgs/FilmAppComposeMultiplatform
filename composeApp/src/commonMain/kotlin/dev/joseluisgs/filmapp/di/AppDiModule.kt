@@ -10,5 +10,7 @@ val appModule = module {
     singleOf(::FilmRest)
     singleOf(::FilmRepository)
     singleOf(::FilmViewModel)
-
 }
+
+// Para la base de datos específica por plataforma
+expect val databaseModule: org.koin.core.module.Module

@@ -13,19 +13,11 @@ plugins {
 kotlin {
     targetHierarchy.default()
     android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
+        jvmToolchain(11) // Java 11 Si quieres Android y Desktop
     }
 
     jvm("desktop") {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
-        }
+        jvmToolchain(11) // Java 11 Si quieres Android y Desktop
     }
 
     sourceSets {
@@ -104,8 +96,8 @@ android {
         res.srcDir("build/generated/libres/android/resources")
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     packagingOptions {
         resources.excludes.add("META-INF/**")
@@ -134,7 +126,7 @@ tasks.getByPath("desktopSourcesJar").dependsOn("libresGenerateResources")
 
 sqldelight {
     databases {
-        create("MyDatabase") {
+        create("AppDatabase") {
             // Database configuration here.
             // https://cashapp.github.io/sqldelight
             packageName.set("dev.joseluisgs.filmapp.db")
