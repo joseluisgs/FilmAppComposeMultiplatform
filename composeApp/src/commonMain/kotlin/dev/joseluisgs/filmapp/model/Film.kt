@@ -1,7 +1,7 @@
 package dev.joseluisgs.filmapp.model
 
 data class Film(
-    val id: Int = NEW_ID,
+    val id: Long = NEW_ID,
     val name: String = "",
     val director: String = "",
     val synopsis: String = "",
@@ -9,6 +9,6 @@ data class Film(
     val rate: String = "",
 ) {
     companion object {
-        val NEW_ID = 0
+        val NEW_ID = 0L
     }
 }

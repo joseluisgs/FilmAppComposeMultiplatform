@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FilmDto(
     @SerialName("id")
-    val id: Int,
+    val id: Long,
     @SerialName("name")
     val name: String,
     @SerialName("director")

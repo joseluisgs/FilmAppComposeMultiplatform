@@ -35,6 +35,19 @@ class FilmViewModel(
                 delay(REFRESH_INTERVAL)
             }
         }
+        // Nos conectamos y cargamos los datos locales de favoritos
+        coroutineScope.launch {
+            loadFavoriteFilms()
+        }
+    }
+
+    private suspend fun loadFavoriteFilms() {
+        logger.debug { "Cargando películas favoritas" }
+        repository.getFavoriteFilms()
+            .collect {
+                logger.debug { "Películas favoritas cargadas" }
+                state = state.copy(favoriteFilms = it)
+            }
     }
 
     suspend fun loadRemoteFilms() {

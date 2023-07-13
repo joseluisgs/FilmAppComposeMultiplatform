@@ -46,12 +46,12 @@ fun InfoContent() {
         Card(
             elevation = CardDefaults.cardElevation(8.dp),
             shape = MaterialTheme.shapes.medium,
-            modifier = Modifier.padding(16.dp).fillMaxWidth(0.5f)
+            modifier = Modifier.padding(16.dp)
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End
+                horizontalArrangement = Arrangement.Center
             ) {
                 // Icono de la App
                 InfoIcon()
@@ -103,7 +103,7 @@ fun InfoText() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(start = 16.dp).fillMaxWidth()
+        modifier = Modifier.padding(start = 16.dp)
     ) {
         Text(
             text = Res.string.app_name,
