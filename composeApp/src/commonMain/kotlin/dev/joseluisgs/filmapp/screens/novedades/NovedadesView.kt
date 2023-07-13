@@ -33,18 +33,18 @@ fun NovedadesView(vm: FilmViewModel, onItemClick: (film: Film) -> Unit) {
             .fillMaxSize()
     ) {
         Column(Modifier.weight(1f)) {
-            if (vm.state.isLoading) {
+            if (vm.stateFilms.isLoading) {
                 logger.debug { "Cargando las películas" }
                 LoadingDataIndicator()
             } else {
                 logger.debug { "Peliculas cargadas" }
-                FilmList(films = vm.state.remoteFilms, onItemClick = onItemClick)
+                FilmList(films = vm.stateFilms.remoteFilms, onItemClick = onItemClick)
             }
         }
-        if (vm.state.isError) {
+        if (vm.stateFilms.isError) {
             logger.error { "Error cargando las películas" }
             MySnackbar(
-                message = vm.state.errorMessage,
+                message = vm.stateFilms.errorMessage,
                 actionLabel = "Reintentar",
                 onAction = {
                     coroutineScope.launch {

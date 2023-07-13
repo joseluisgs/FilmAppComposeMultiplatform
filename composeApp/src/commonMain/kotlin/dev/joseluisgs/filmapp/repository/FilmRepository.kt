@@ -10,6 +10,7 @@ import dev.joseluisgs.filmapp.db.DataBase
 import dev.joseluisgs.filmapp.dto.FilmDto
 import dev.joseluisgs.filmapp.error.FilmError
 import dev.joseluisgs.filmapp.mapper.toFilm
+import dev.joseluisgs.filmapp.mapper.toFilmEntity
 import dev.joseluisgs.filmapp.model.Film
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -65,5 +66,25 @@ class FilmRepository(private val filmRest: FilmRest, private val filmDb: DataBas
             .map { list ->
                 list.map { it.toFilm() }
             }
+    }
+
+    suspend fun getFavoriteFilmById(id: Long): Film? = withContext(Dispatchers.IO) {
+        logger.debug { "getFilmById from local" }
+        return@withContext filmDb.queries.selectById(id).executeAsOneOrNull()?.toFilm()
+    }
+
+    suspend fun existsFavoriteFilmById(id: Long): Boolean = withContext(Dispatchers.IO) {
+        logger.debug { "existsFilmById from local" }
+        return@withContext filmDb.queries.selectById(id).executeAsOneOrNull() != null
+    }
+
+    suspend fun insertFavoriteFilm(film: Film) = withContext(Dispatchers.IO) {
+        logger.debug { "insertFilm from local" }
+        return@withContext filmDb.queries.insertFull(film.toFilmEntity())
+    }
+
+    suspend fun deleteFavoriteFilm(film: Film) = withContext(Dispatchers.IO) {
+        logger.debug { "deleteFilm from local" }
+        return@withContext filmDb.queries.deleteById(film.id)
     }
 }

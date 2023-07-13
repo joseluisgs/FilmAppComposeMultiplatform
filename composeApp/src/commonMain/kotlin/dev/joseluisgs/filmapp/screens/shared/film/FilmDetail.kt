@@ -15,11 +15,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.joseluisgs.filmapp.model.Film
+import dev.joseluisgs.filmapp.screens.viewmodel.FilmViewModel
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
 @Composable
-fun FilmDetail(film: Film, onBackClick: () -> Unit) {
+fun FilmDetail(
+    filmDetail: FilmViewModel.FilmDetails,
+    onBackClick: () -> Unit,
+    onFavoriteClick: (Film) -> Unit
+) {
     // Recuerda que el box es un contenedor y el primero que se pinta
     Box(
         modifier = Modifier.fillMaxWidth()
@@ -27,7 +32,7 @@ fun FilmDetail(film: Film, onBackClick: () -> Unit) {
     ) {
         // Ponemos in texto en la parte superior derecha
         // Imagen
-        DetailImage(film)
+        DetailImage(filmDetail.film)
         // Icono de cerrar
         DetailCloseButton(
             onBackClick = onBackClick,
@@ -36,7 +41,9 @@ fun FilmDetail(film: Film, onBackClick: () -> Unit) {
             )
         // Card
         DetailsInfo(
-            film = film,
+            film = filmDetail.film,
+            isFavorite = filmDetail.isFavorite,
+            onFavoriteClick = onFavoriteClick,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
 
@@ -44,7 +51,12 @@ fun FilmDetail(film: Film, onBackClick: () -> Unit) {
 }
 
 @Composable
-private fun DetailsInfo(film: Film, modifier: Modifier = Modifier) {
+private fun DetailsInfo(
+    film: Film,
+    isFavorite: Boolean,
+    onFavoriteClick: (Film) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Card(
         elevation = CardDefaults.cardElevation(8.dp),
         shape = MaterialTheme.shapes.medium,
@@ -91,14 +103,16 @@ private fun DetailsInfo(film: Film, modifier: Modifier = Modifier) {
                 }
                 // Icono de favorito
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { onFavoriteClick(film) },
                     modifier = Modifier.align(Alignment.CenterVertically).padding(8.dp)
                         .pointerHoverIcon(PointerIcon.Hand)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Star,
                         contentDescription = "Favorite",
-                        modifier = Modifier.size(128.dp)
+                        modifier = Modifier.size(128.dp),
+                        // color naranja
+                        tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.inversePrimary
                     )
                 }
             }

@@ -59,6 +59,10 @@ object NovedadesTab : Tab, KoinComponent {
                 onBackClick = {
                     logger.debug { "Click en Cerrar" }
                     screen = ViewType.NOVEDADES
+                },
+                onFavoriteClick = {
+                    logger.debug { "Click en Favorito: $it" }
+                    viewModel.setFavoriteFilm(it)
                 }
             )
         }

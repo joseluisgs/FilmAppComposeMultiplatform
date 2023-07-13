@@ -19,15 +19,19 @@ private val REFRESH_INTERVAL = 1000L * 60L // 1 minute
 class FilmViewModel(
     private val repository: FilmRepository
 ) : ScreenModel {
-    var state by mutableStateOf(State())
+    var stateFilms by mutableStateOf(StateFilms())
         private set
 
-    var selectedRemoteFilm by mutableStateOf(Film())
+    var selectedRemoteFilm by mutableStateOf(FilmDetails())
         private set
 
     init {
         logger.info { "Inicializando FilmViewModel" }
-        state = state.copy(isLoading = true)
+        stateFilms = stateFilms.copy(isLoading = true)
+        // Nos conectamos y cargamos los datos locales de favoritos
+        coroutineScope.launch {
+            loadFavoriteFilms()
+        }
         // Primero cargamos los datos remotos
         coroutineScope.launch {
             while (true) {
@@ -35,10 +39,7 @@ class FilmViewModel(
                 delay(REFRESH_INTERVAL)
             }
         }
-        // Nos conectamos y cargamos los datos locales de favoritos
-        coroutineScope.launch {
-            loadFavoriteFilms()
-        }
+
     }
 
     private suspend fun loadFavoriteFilms() {
@@ -46,7 +47,7 @@ class FilmViewModel(
         repository.getFavoriteFilms()
             .collect {
                 logger.debug { "Películas favoritas cargadas" }
-                state = state.copy(favoriteFilms = it)
+                stateFilms = stateFilms.copy(favoriteFilms = it)
             }
     }
 
@@ -55,11 +56,11 @@ class FilmViewModel(
         repository.getRemoteFilms().mapBoth(
             success = {
                 logger.debug { "Películas remotas cargadas" }
-                state = state.copy(isLoading = false, remoteFilms = it.first())
+                stateFilms = stateFilms.copy(isLoading = false, remoteFilms = it.first())
             },
             failure = {
                 logger.error { "Error al cargar las películas remotas" }
-                state = state.copy(
+                stateFilms = stateFilms.copy(
                     isLoading = false,
                     isError = true,
                     errorMessage = it.message
@@ -69,16 +70,40 @@ class FilmViewModel(
     }
 
     fun setRemoteFilmDetails(film: Film) {
-        selectedRemoteFilm = film
+        logger.debug { "Cargando detalles de la película" }
+        selectedRemoteFilm = selectedRemoteFilm.copy(film = film, isFavorite = stateFilms.favoriteFilms.contains(film))
+    }
+
+    fun setFavoriteFilm(film: Film) {
+        // Si es favorito lo quitamos, si no lo añadimos
+        if (stateFilms.favoriteFilms.contains(film)) {
+            logger.debug { "Quitando película de favoritos" }
+            coroutineScope.launch {
+                repository.deleteFavoriteFilm(film)
+                selectedRemoteFilm = selectedRemoteFilm.copy(isFavorite = !selectedRemoteFilm.isFavorite)
+            }
+        } else {
+            logger.debug { "Añadiendo película a favoritos" }
+            coroutineScope.launch {
+                repository.insertFavoriteFilm(film)
+                selectedRemoteFilm = selectedRemoteFilm.copy(isFavorite = !selectedRemoteFilm.isFavorite)
+            }
+        }
+
     }
 
 
     // El estado de la vista
-    data class State(
+    data class StateFilms(
         val isLoading: Boolean = false,
         val remoteFilms: List<Film> = emptyList(),
         val favoriteFilms: List<Film> = emptyList(),
         val isError: Boolean = false,
         val errorMessage: String = ""
+    )
+
+    data class FilmDetails(
+        val film: Film = Film(),
+        val isFavorite: Boolean = false,
     )
 }

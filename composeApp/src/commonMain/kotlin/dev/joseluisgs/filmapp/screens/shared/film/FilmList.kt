@@ -11,7 +11,10 @@ fun FilmList(films: List<Film>, onItemClick: (film: Film) -> Unit) {
     // hacemos una lazy list de 5
     LazyColumn {
         items(films) { film ->
-            MovieCard(film = film, onClick = onItemClick)
+            MovieCard(
+                film = film,
+                onClick = onItemClick
+            )
         }
     }
 
