@@ -14,23 +14,54 @@ Este es un ejemplo de una aplicación gestión de películas con Kotlin Multipla
 simple pero que muestra como podemos usar Compose en una aplicación multiplataforma. En este caso, la aplicación se
 compone de un módulo Desktop y otro Android, pero podríamos añadir más módulos para iOS, Web, etc.
 
-Este ejemplo esta basado en el tutorial
+Este ejemplo esta basado en el tutorial:
 de [JetPack de programación de Android](https://github.com/joseluisgs/Kotlin-Jetpack-Android).
 
 Entre las cosas que podemos ver en este ejemplo están:
 
 - App de Android y Desktop con código compartido con Kotlin Multiplatform y Compose
 - Material Design 3 con Compose con temas y colores
-- Uso de Voyager para la navegación y gestion de rutas y estados de pantallas
+- Uso de Voyager para la navegación y gestión de rutas y estados de pantallas
+- Estados reactivos, UDF (Unidirectional Data Flow) y MVVM (Model View ViewModel)
 - Uso de Coroutines para el manejo de asincronía
 - Uso de Koin para la inyección de dependencias
 - Uso de Ktor para la comunicación con la API
 - Uso de Kotlinx Serialization para la serialización de datos
 - Uso de Libres para manejo de recursos multiplataforma
-- Uso de Compose ImageLoader para la carga de imágenes
-- SQLDelight para la persistencia de datos
+- Uso de Kamel para la carga de imágenes asíncronas
+- SQLDelight para la persistencia de datos mutiplataforma
 - Gestión de estados mediante Railway Oriented Programming (ROP y LCE (Loading, Content, Error))
-- Iconos de Material y Font Awesome
+- Iconos de Material Icons y Feather Icons
+
+### API de películas
+
+Una forma sencilla de obtener datos de películas es usar tu propio repositorio en GitHub.
+
+Verás que todo está en el directorio [api](https://github.com/joseluisgs/FilmAppCompose/tree/main/api), donde
+descargamos como raw el json de datos y las imágenes.
+
+### Imagenes
+
+#### Desktop
+![imagen](./images/01.png)
+![imagen](./images/02.png)
+![imagen](./images/03.png)
+![imagen](./images/04.png)
+
+#### Android
+![imagen](./images/05.png)
+![imagen](./images/06.png)
+![imagen](./images/07.png)
+![imagen](./images/08.png)
+
+#### Desktop y Android
+![imagen](./images/09.png)
+![imagen](./images/10.png)
+![imagen](./images/11.png)
+![imagen](./images/12.png)
+![imagen](./images/13.png)
+
+
 
 ### Before running!
 
