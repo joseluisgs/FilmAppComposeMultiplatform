@@ -1,4 +1,4 @@
-CREATE TABLE FilmFavorite (
+CREATE TABLE IF NOT EXISTS FilmEntity (
    id   INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT NOT NULL,
    director TEXT NOT NULL,
@@ -6,3 +6,30 @@ CREATE TABLE FilmFavorite (
    image TEXT NOT NULL,
    rate TEXT NOT NULL
 );
+
+deleteAll:
+DELETE FROM FilmEntity;
+
+selectAll:
+SELECT * FROM FilmEntity;
+
+selectById:
+SELECT * FROM FilmEntity WHERE id = :id;
+
+selectLastInserted:
+SELECT * FROM FilmEntity WHERE id = last_insert_rowid();
+
+insert:
+INSERT INTO FilmEntity (name, director, synopsis, image, rate) VALUES (:name, :director, :synopsis, :image, :rate);
+
+insertWithId:
+INSERT INTO FilmEntity (id, name, director, synopsis, image, rate) VALUES (:id, :name, :director, :synopsis, :image, :rate);
+
+insertFull:
+INSERT INTO FilmEntity (id, name, director, synopsis, image, rate) VALUES ?;
+
+update:
+UPDATE FilmEntity SET name = :name, director = :director, synopsis = :synopsis, image = :image, rate = :rate WHERE id = :id;
+
+deleteById:
+DELETE FROM FilmEntity WHERE id = :id;
