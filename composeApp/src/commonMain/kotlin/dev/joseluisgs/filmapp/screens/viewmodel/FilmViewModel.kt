@@ -79,13 +79,20 @@ class FilmViewModel(
         if (stateFilms.favoriteFilms.contains(film)) {
             logger.debug { "Quitando película de favoritos" }
             coroutineScope.launch {
-                repository.deleteFavoriteFilm(film)
+                // Esta comprobación es redundante, pero por si acaso la dejamos
+                if (repository.existsFavoriteFilmById(film.id)) {
+                    logger.debug { "Película existe en favoritos" }
+                    repository.deleteFavoriteFilm(film)
+                }
                 selectedRemoteFilm = selectedRemoteFilm.copy(isFavorite = !selectedRemoteFilm.isFavorite)
             }
         } else {
             logger.debug { "Añadiendo película a favoritos" }
             coroutineScope.launch {
-                repository.insertFavoriteFilm(film)
+                if (!repository.existsFavoriteFilmById(film.id)) {
+                    logger.debug { "Película no existe en favoritos" }
+                    repository.insertFavoriteFilm(film)
+                }
                 selectedRemoteFilm = selectedRemoteFilm.copy(isFavorite = !selectedRemoteFilm.isFavorite)
             }
         }

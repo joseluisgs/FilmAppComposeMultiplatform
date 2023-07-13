@@ -25,7 +25,7 @@ private val logger = logging()
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NovedadesView(vm: FilmViewModel, onItemClick: (film: Film) -> Unit) {
-    val coroutineScope = rememberCoroutineScope()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -43,6 +43,7 @@ fun NovedadesView(vm: FilmViewModel, onItemClick: (film: Film) -> Unit) {
         }
         if (vm.stateFilms.isError) {
             logger.error { "Error cargando las películas" }
+            val coroutineScope = rememberCoroutineScope()
             MySnackbar(
                 message = vm.stateFilms.errorMessage,
                 actionLabel = "Reintentar",
